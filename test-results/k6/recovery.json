@@ -1,0 +1,377 @@
+{
+  "setup_data": {
+    "beforeB": {
+      "plan": {
+        "delayMs": 0,
+        "failures": 0,
+        "mode": "success"
+      },
+      "retryAttempts": 0,
+      "state": "CLOSED",
+      "bufferedCalls": 0,
+      "failedCalls": 0,
+      "notPermittedCalls": 0,
+      "stateTransitions": 0,
+      "attempts": 0,
+      "breaker": "dependencyCircuitBreaker",
+      "events": []
+    },
+    "name": "recovery",
+    "beforeA": {
+      "retryAttempts": 8,
+      "state": "HALF_OPEN",
+      "bufferedCalls": 0,
+      "failedCalls": 0,
+      "plan": {
+        "delayMs": 0,
+        "failures": 0,
+        "mode": "success"
+      },
+      "stateTransitions": 2,
+      "attempts": 0,
+      "breaker": "availabilityCircuitBreaker",
+      "events": [
+        "2026-10-27T10:17:36.433791600Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+        "2026-10-27T10:17:36.535851600Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+        "2026-10-27T10:17:36.646377500Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+        "2026-10-27T10:17:36.647366400Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 213 ms",
+        "2026-10-27T10:17:36.650662300Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+        "2026-10-27T10:17:36.755804900Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+        "2026-10-27T10:17:36.866337Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+        "2026-10-27T10:17:36.866337Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 216 ms",
+        "2026-10-27T10:17:36.869072700Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+        "2026-10-27T10:17:36.974282700Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+        "2026-10-27T10:17:37.081798800Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+        "2026-10-27T10:17:37.082544100Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 213 ms",
+        "2026-10-27T10:17:37.085395Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+        "2026-10-27T10:17:37.191337500Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+        "2026-10-27T10:17:37.299173700Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+        "2026-10-27T10:17:37.300086Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 214 ms",
+        "2026-10-27T10:17:37.300086Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+        "2026-10-27T10:17:37.300086Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from CLOSED to OPEN",
+        "2026-10-27T10:17:37.583676800Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from OPEN to HALF_OPEN"
+      ],
+      "notPermittedCalls": 0
+    }
+  },
+  "root_group": {
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": [
+        {
+          "name": "expected scenario status",
+          "path": "::expected scenario status",
+          "id": "4950436eff3c8f289a36032df048e57c",
+          "passes": 39,
+          "fails": 0
+        }
+      ],
+    "name": ""
+  },
+  "options": {
+    "summaryTrendStats": [
+      "avg",
+      "min",
+      "med",
+      "max",
+      "p(90)",
+      "p(95)"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": true
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 22562.1377
+  },
+  "metrics": {
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 0.6307,
+        "p(95)": 0.8076799999999997,
+        "avg": 0.15976363636363636,
+        "min": 0,
+        "med": 0,
+        "max": 2.3141
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 1,
+        "min": 1,
+        "max": 1
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 259.26168,
+        "p(95)": 260.23799,
+        "avg": 257.70158717948715,
+        "min": 255.284,
+        "med": 257.2671,
+        "max": 263.275
+      }
+    },
+    "response_status": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 39,
+        "rate": 1.7285596125051572
+      }
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 55,
+        "rate": 2.4377122740457344
+      }
+    },
+    "observed_state_transitions": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 1,
+        "rate": 0.04432204134628608
+      }
+    },
+    "observed_retry_events": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 0,
+        "rate": 0
+      }
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0.14031636363636363,
+        "min": 0,
+        "med": 0,
+        "max": 2.3141,
+        "p(90)": 0.6307,
+        "p(95)": 0.7400399999999998
+      }
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 43393,
+        "rate": 1923.266340139392
+      }
+    },
+    "response_status{status:200}": {
+      "thresholds": {
+        "count>=0": {
+          "ok": true
+        }
+      },
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 39,
+        "rate": 1.7285596125051572
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 5.7135,
+        "max": 216.1862,
+        "p(90)": 9.15756,
+        "p(95)": 215.12142,
+        "avg": 20.59785272727273,
+        "min": 0.9605
+      }
+    },
+    "checks": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "fails": 0,
+        "rate": 1,
+        "passes": 39
+      }
+    },
+    "observed_dependency_attempts": {
+      "values": {
+        "count": 78,
+        "rate": 3.4571192250103144
+      },
+      "type": "counter",
+      "contains": "default"
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0,
+        "min": 0,
+        "med": 0,
+        "max": 0,
+        "p(90)": 0,
+        "p(95)": 0
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0.07272727272727272,
+        "passes": 4,
+        "fails": 51
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 5.827264705882356,
+        "min": 1.3032,
+        "med": 6.0333,
+        "max": 10.19,
+        "p(90)": 8.3735,
+        "p(95)": 8.969100000000001
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 4982,
+        "rate": 220.81240998719727
+      }
+    },
+    "operation_duration": {
+      "values": {
+        "max": 10.19,
+        "p(90)": 8.43072,
+        "p(95)": 9.39356,
+        "avg": 6.883258974358976,
+        "min": 4.8616,
+        "med": 6.6011
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "response_status{status:429}": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 0,
+        "rate": 0
+      },
+      "thresholds": {
+        "count>=0": {
+          "ok": true
+        }
+      }
+    },
+    "response_status{status:503}": {
+      "thresholds": {
+        "count>=0": {
+          "ok": true
+        }
+      },
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "count": 0
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 0,
+        "max": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "avg": 0,
+        "min": 0
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 1,
+        "min": 0,
+        "max": 1
+      }
+    },
+    "iterations": {
+      "contains": "default",
+      "values": {
+        "count": 39,
+        "rate": 1.7285596125051572
+      },
+      "type": "counter"
+    },
+    "unexpected_failures": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 39
+      },
+      "thresholds": {
+        "rate<0.01": {
+          "ok": true
+        }
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 0.6174,
+        "max": 1.5132,
+        "p(90)": 0.91596,
+        "p(95)": 0.99068,
+        "avg": 0.5264345454545455,
+        "min": 0
+      }
+    },
+    "response_status{status:504}": {
+      "thresholds": {
+        "count>=0": {
+          "ok": true
+        }
+      },
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 0,
+        "rate": 0
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 21.12428727272728,
+        "min": 1.3032,
+        "med": 6.2205,
+        "max": 217.6994,
+        "p(90)": 9.62236,
+        "p(95)": 215.24109
+      }
+    }
+  }
+}

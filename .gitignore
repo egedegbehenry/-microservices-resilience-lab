@@ -1,0 +1,28 @@
+
+# Maven build output
+**/target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Environment variables and local configuration
+.env
+.env.*
+!.env.example
+**/application-local.yml
+**/application-local.yaml
+**/application-local.properties
+
+# Logs and test outputs
+*.log
+k6-results/
+test-results/runtime/
+__pycache__/
+*.pyc
+k6-summary.json
+
+# Operating system files
+.DS_Store
+Thumbs.db

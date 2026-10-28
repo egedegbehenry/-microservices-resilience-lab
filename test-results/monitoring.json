@@ -1,0 +1,112 @@
+[
+  {
+    "port": 18081,
+    "endpoint": "circuitbreakers",
+    "status": 200
+  },
+  {
+    "port": 18081,
+    "endpoint": "circuitbreakerevents",
+    "status": 200
+  },
+  {
+    "port": 18081,
+    "endpoint": "retries",
+    "status": 200
+  },
+  {
+    "port": 18081,
+    "endpoint": "retryevents",
+    "status": 200
+  },
+  {
+    "port": 18081,
+    "endpoint": "ratelimiters",
+    "status": 200
+  },
+  {
+    "port": 18081,
+    "endpoint": "ratelimiterevents",
+    "status": 200
+  },
+  {
+    "port": 18081,
+    "endpoint": "metrics",
+    "status": 200
+  },
+  {
+    "port": 18081,
+    "endpoint": "metrics/resilience4j.circuitbreaker.calls",
+    "status": 200
+  },
+  {
+    "port": 18081,
+    "endpoint": "metrics/resilience4j.circuitbreaker.state",
+    "status": 200
+  },
+  {
+    "port": 18081,
+    "endpoint": "metrics/resilience4j.retry.calls",
+    "status": 200
+  },
+  {
+    "port": 18081,
+    "endpoint": "metrics/resilience4j.ratelimiter.available.permissions",
+    "status": 200
+  },
+  {
+    "port": 18082,
+    "endpoint": "circuitbreakers",
+    "status": 200
+  },
+  {
+    "port": 18082,
+    "endpoint": "circuitbreakerevents",
+    "status": 200
+  },
+  {
+    "port": 18082,
+    "endpoint": "retries",
+    "status": 200
+  },
+  {
+    "port": 18082,
+    "endpoint": "retryevents",
+    "status": 200
+  },
+  {
+    "port": 18082,
+    "endpoint": "ratelimiters",
+    "status": 200
+  },
+  {
+    "port": 18082,
+    "endpoint": "ratelimiterevents",
+    "status": 200
+  },
+  {
+    "port": 18082,
+    "endpoint": "metrics",
+    "status": 200
+  },
+  {
+    "port": 18082,
+    "endpoint": "metrics/resilience4j.circuitbreaker.calls",
+    "status": 200
+  },
+  {
+    "port": 18082,
+    "endpoint": "metrics/resilience4j.circuitbreaker.state",
+    "status": 200
+  },
+  {
+    "port": 18082,
+    "endpoint": "metrics/resilience4j.retry.calls",
+    "status": 200
+  },
+  {
+    "port": 18082,
+    "endpoint": "metrics/resilience4j.ratelimiter.available.permissions",
+    "status": 200
+  }
+]

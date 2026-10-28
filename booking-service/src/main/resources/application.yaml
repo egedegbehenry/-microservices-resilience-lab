@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: booking-service
+  http:
+    clients:
+      connect-timeout: ${CONNECT_TIMEOUT:1s}
+      read-timeout: ${READ_TIMEOUT:8s}
+server:
+  port: 8081
+resilience4j:
+  circuitbreaker:
+    circuitBreakerAspectOrder: 2
+    instances:
+      availabilityCircuitBreaker:
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 4
+        minimumNumberOfCalls: 4
+        failureRateThreshold: 50
+        waitDurationInOpenState: ${CB_WAIT:10s}
+        permittedNumberOfCallsInHalfOpenState: 2
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        eventConsumerBufferSize: 100
+        ignoreExceptions:
+          - io.github.resilience4j.ratelimiter.RequestNotPermitted
+          - org.springframework.web.client.HttpClientErrorException
+  retry:
+    retryAspectOrder: 3
+    instances:
+      availabilityCircuitBreaker:
+        maxAttempts: ${RETRY_ATTEMPTS:3}
+        waitDuration: ${RETRY_DELAY:500ms}
+        enableExponentialBackoff: ${RETRY_EXPONENTIAL:false}
+        exponentialBackoffMultiplier: 2
+        retryExceptions:
+          - org.springframework.web.client.HttpServerErrorException.ServiceUnavailable
+          - org.springframework.web.client.HttpServerErrorException.BadGateway
+          - org.springframework.web.client.HttpServerErrorException.GatewayTimeout
+          - org.springframework.web.client.ResourceAccessException
+  ratelimiter:
+    rateLimiterAspectOrder: 1
+    instances:
+      availabilityCircuitBreaker:
+        limitForPeriod: ${RATE_LIMIT:2}
+        limitRefreshPeriod: ${RATE_PERIOD:5s}
+        timeoutDuration: ${RATE_TIMEOUT:0ms}
+        eventConsumerBufferSize: 100
+services:
+  availability:
+    base-url: ${AVAILABILITY_SERVICE_URL:http://localhost:8082}

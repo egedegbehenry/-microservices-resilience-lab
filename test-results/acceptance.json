@@ -1,0 +1,1009 @@
+{
+  "timestamp": "2026-10-27T10:21:13+0000",
+  "results": [
+    {
+      "scenario": "preserved five-second delay through upstream with default eight-second read timeout",
+      "elapsedSeconds": 5.034
+    },
+    {
+      "scenario": "1 normal HTTP communication",
+      "A": {
+        "events": [
+          "2026-10-27T10:19:55.628296Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 7 ms"
+        ],
+        "notPermittedCalls": 0,
+        "attempts": 1,
+        "state": "CLOSED",
+        "failedCalls": 0,
+        "bufferedCalls": 1,
+        "retryAttempts": 0,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "stateTransitions": 0,
+        "breaker": "availabilityCircuitBreaker"
+      },
+      "B": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 0,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "retryAttempts": 0,
+        "bufferedCalls": 1,
+        "failedCalls": 0,
+        "state": "CLOSED",
+        "attempts": 1,
+        "notPermittedCalls": 0,
+        "events": [
+          "2026-10-27T10:19:55.625299400Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms"
+        ]
+      }
+    },
+    {
+      "scenario": "2 downstream independently open",
+      "A": {
+        "events": [],
+        "notPermittedCalls": 0,
+        "attempts": 0,
+        "state": "CLOSED",
+        "failedCalls": 0,
+        "bufferedCalls": 0,
+        "retryAttempts": 0,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "stateTransitions": 0,
+        "breaker": "availabilityCircuitBreaker"
+      },
+      "B": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 1,
+        "plan": {
+          "mode": "failure",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "retryAttempts": 8,
+        "bufferedCalls": 4,
+        "failedCalls": 4,
+        "state": "OPEN",
+        "attempts": 12,
+        "notPermittedCalls": 1,
+        "events": [
+          "2026-10-27T10:19:56.824584800Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:19:56.938752300Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:19:57.048448600Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:19:57.049446400Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 225 ms",
+          "2026-10-27T10:19:57.079733400Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:19:57.187566500Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:19:57.296713Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:19:57.297678Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 217 ms",
+          "2026-10-27T10:19:57.313676300Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:19:57.423626700Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:19:57.534696500Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:19:57.534696500Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 221 ms",
+          "2026-10-27T10:19:57.551392Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:19:57.661501200Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:19:57.768287900Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:19:57.768287900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 218 ms",
+          "2026-10-27T10:19:57.769599Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:19:57.769599Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:19:57.816678700Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a call which was not permitted."
+        ]
+      }
+    },
+    {
+      "scenario": "3 upstream independently open",
+      "A": {
+        "events": [
+          "2026-10-27T10:19:59.011803200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.117613Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.228159100Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.228159100Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 216 ms",
+          "2026-10-27T10:19:59.233289Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.339586600Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.450284900Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.450284900Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 218 ms",
+          "2026-10-27T10:19:59.466042700Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.574544300Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.686525400Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.686525400Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 220 ms",
+          "2026-10-27T10:19:59.691528900Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.795353900Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.905992600Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.905992600Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 215 ms",
+          "2026-10-27T10:19:59.905992600Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:19:59.906986700Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:19:59.919993600Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a call which was not permitted."
+        ],
+        "notPermittedCalls": 1,
+        "attempts": 12,
+        "state": "OPEN",
+        "failedCalls": 4,
+        "bufferedCalls": 4,
+        "retryAttempts": 8,
+        "plan": {
+          "mode": "failure",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "stateTransitions": 1,
+        "breaker": "availabilityCircuitBreaker"
+      },
+      "B": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 0,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "retryAttempts": 0,
+        "bufferedCalls": 0,
+        "failedCalls": 0,
+        "state": "CLOSED",
+        "attempts": 0,
+        "notPermittedCalls": 0,
+        "events": []
+      }
+    },
+    {
+      "scenario": "4 both open",
+      "A": {
+        "events": [
+          "2026-10-27T10:19:59.011803200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.117613Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.228159100Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.228159100Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 216 ms",
+          "2026-10-27T10:19:59.233289Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.339586600Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.450284900Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.450284900Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 218 ms",
+          "2026-10-27T10:19:59.466042700Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.574544300Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.686525400Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.686525400Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 220 ms",
+          "2026-10-27T10:19:59.691528900Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.795353900Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.905992600Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:19:59.905992600Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 215 ms",
+          "2026-10-27T10:19:59.905992600Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:19:59.906986700Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:19:59.919993600Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a call which was not permitted."
+        ],
+        "notPermittedCalls": 1,
+        "attempts": 12,
+        "state": "OPEN",
+        "failedCalls": 4,
+        "bufferedCalls": 4,
+        "retryAttempts": 8,
+        "plan": {
+          "mode": "failure",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "stateTransitions": 1,
+        "breaker": "availabilityCircuitBreaker"
+      },
+      "B": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 1,
+        "plan": {
+          "mode": "failure",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "retryAttempts": 8,
+        "bufferedCalls": 4,
+        "failedCalls": 4,
+        "state": "OPEN",
+        "attempts": 12,
+        "notPermittedCalls": 1,
+        "events": [
+          "2026-10-27T10:19:59.948008600Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:00.050587Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:00.158728500Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:00.160942900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 212 ms",
+          "2026-10-27T10:20:00.167026Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:00.267832500Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:00.393631800Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:00.394628300Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 228 ms",
+          "2026-10-27T10:20:00.404630100Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:00.520202600Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:00.632794500Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:00.633797100Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 229 ms",
+          "2026-10-27T10:20:00.638819400Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:00.742956600Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:00.854296300Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:00.854296300Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 216 ms",
+          "2026-10-27T10:20:00.855290800Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:20:00.855290800Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:20:00.903646800Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a call which was not permitted."
+        ]
+      }
+    },
+    {
+      "scenario": "5 upstream probes",
+      "A": {
+        "events": [
+          "2026-10-27T10:20:02.117085200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.222205800Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.333791700Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.333791700Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 217 ms",
+          "2026-10-27T10:20:02.349814100Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.459220200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.570097100Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.571112Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 220 ms",
+          "2026-10-27T10:20:02.587100700Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.695990200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.804738800Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.804738800Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 218 ms",
+          "2026-10-27T10:20:02.809694500Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.916362200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:03.027912300Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:03.027912300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 218 ms",
+          "2026-10-27T10:20:03.027912300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:20:03.027912300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:20:03.073899100Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a call which was not permitted.",
+          "2026-10-27T10:20:11.769576300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from OPEN to HALF_OPEN"
+        ],
+        "notPermittedCalls": 0,
+        "attempts": 0,
+        "state": "HALF_OPEN",
+        "failedCalls": 0,
+        "bufferedCalls": 0,
+        "retryAttempts": 8,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "stateTransitions": 2,
+        "breaker": "availabilityCircuitBreaker"
+      },
+      "B": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 0,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "retryAttempts": 0,
+        "bufferedCalls": 0,
+        "failedCalls": 0,
+        "state": "CLOSED",
+        "attempts": 0,
+        "notPermittedCalls": 0,
+        "events": []
+      }
+    },
+    {
+      "scenario": "upstream successful recovery",
+      "A": {
+        "events": [
+          "2026-10-27T10:20:02.117085200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.222205800Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.333791700Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.333791700Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 217 ms",
+          "2026-10-27T10:20:02.349814100Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.459220200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.570097100Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.571112Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 220 ms",
+          "2026-10-27T10:20:02.587100700Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.695990200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.804738800Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.804738800Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 218 ms",
+          "2026-10-27T10:20:02.809694500Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:02.916362200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:03.027912300Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:03.027912300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 218 ms",
+          "2026-10-27T10:20:03.027912300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:20:03.027912300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:20:03.073899100Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a call which was not permitted.",
+          "2026-10-27T10:20:11.769576300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from OPEN to HALF_OPEN",
+          "2026-10-27T10:20:11.856489600Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 6 ms",
+          "2026-10-27T10:20:11.888229300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 6 ms",
+          "2026-10-27T10:20:11.889236300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from HALF_OPEN to CLOSED"
+        ],
+        "notPermittedCalls": 0,
+        "attempts": 2,
+        "state": "CLOSED",
+        "failedCalls": 0,
+        "bufferedCalls": 0,
+        "retryAttempts": 8,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "stateTransitions": 3,
+        "breaker": "availabilityCircuitBreaker"
+      },
+      "B": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 0,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "retryAttempts": 0,
+        "bufferedCalls": 2,
+        "failedCalls": 0,
+        "state": "CLOSED",
+        "attempts": 2,
+        "notPermittedCalls": 0,
+        "events": [
+          "2026-10-27T10:20:11.854488400Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:20:11.886218200Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms"
+        ]
+      }
+    },
+    {
+      "scenario": "6 downstream probes",
+      "A": {
+        "events": [],
+        "notPermittedCalls": 0,
+        "attempts": 0,
+        "state": "CLOSED",
+        "failedCalls": 0,
+        "bufferedCalls": 0,
+        "retryAttempts": 0,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "stateTransitions": 0,
+        "breaker": "availabilityCircuitBreaker"
+      },
+      "B": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 2,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "retryAttempts": 8,
+        "bufferedCalls": 0,
+        "failedCalls": 0,
+        "state": "HALF_OPEN",
+        "attempts": 0,
+        "notPermittedCalls": 0,
+        "events": [
+          "2026-10-27T10:20:13.051480Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.167567200Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.278146300Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.279140700Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 227 ms",
+          "2026-10-27T10:20:13.285324800Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.386819800Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.494738900Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.495736Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 211 ms",
+          "2026-10-27T10:20:13.526735200Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.636693Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.744559800Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.744559800Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 218 ms",
+          "2026-10-27T10:20:13.762038100Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.870620900Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.977997400Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.979005900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 217 ms",
+          "2026-10-27T10:20:13.979005900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:20:13.979005900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:20:14.010441200Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a call which was not permitted.",
+          "2026-10-27T10:20:23.992812100Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from OPEN to HALF_OPEN"
+        ]
+      }
+    },
+    {
+      "scenario": "downstream successful recovery",
+      "A": {
+        "events": [],
+        "notPermittedCalls": 0,
+        "attempts": 0,
+        "state": "CLOSED",
+        "failedCalls": 0,
+        "bufferedCalls": 0,
+        "retryAttempts": 0,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "stateTransitions": 0,
+        "breaker": "availabilityCircuitBreaker"
+      },
+      "B": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 3,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "retryAttempts": 8,
+        "bufferedCalls": 0,
+        "failedCalls": 0,
+        "state": "CLOSED",
+        "attempts": 2,
+        "notPermittedCalls": 0,
+        "events": [
+          "2026-10-27T10:20:13.051480Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.167567200Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.278146300Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.279140700Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 227 ms",
+          "2026-10-27T10:20:13.285324800Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.386819800Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.494738900Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.495736Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 211 ms",
+          "2026-10-27T10:20:13.526735200Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.636693Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.744559800Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.744559800Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 218 ms",
+          "2026-10-27T10:20:13.762038100Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.870620900Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.977997400Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:13.979005900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 217 ms",
+          "2026-10-27T10:20:13.979005900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:20:13.979005900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:20:14.010441200Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a call which was not permitted.",
+          "2026-10-27T10:20:23.992812100Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from OPEN to HALF_OPEN",
+          "2026-10-27T10:20:24.072346100Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:20:24.088358200Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:20:24.088358200Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from HALF_OPEN to CLOSED"
+        ]
+      }
+    },
+    {
+      "scenario": "7 simultaneous half open",
+      "A": {
+        "events": [
+          "2026-10-27T10:20:25.271027100Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.380743600Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.488525300Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.488525300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 218 ms",
+          "2026-10-27T10:20:25.505061Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.615598900Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.727126900Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.727126900Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 223 ms",
+          "2026-10-27T10:20:25.744129900Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.850905200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.962449600Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.963446500Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 219 ms",
+          "2026-10-27T10:20:25.979454200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:26.090022300Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:26.201095100Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:26.201095100Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 222 ms",
+          "2026-10-27T10:20:26.201095100Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:20:26.202098500Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:20:26.249093200Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a call which was not permitted.",
+          "2026-10-27T10:20:36.208747300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from OPEN to HALF_OPEN"
+        ],
+        "notPermittedCalls": 0,
+        "attempts": 0,
+        "state": "HALF_OPEN",
+        "failedCalls": 0,
+        "bufferedCalls": 0,
+        "retryAttempts": 8,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "stateTransitions": 2,
+        "breaker": "availabilityCircuitBreaker"
+      },
+      "B": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 2,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "retryAttempts": 8,
+        "bufferedCalls": 0,
+        "failedCalls": 0,
+        "state": "HALF_OPEN",
+        "attempts": 0,
+        "notPermittedCalls": 0,
+        "events": [
+          "2026-10-27T10:20:26.260097900Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.374625200Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.484754200Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.484754200Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 224 ms",
+          "2026-10-27T10:20:26.501280400Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.608821100Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.719380400Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.720381800Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 219 ms",
+          "2026-10-27T10:20:26.736377Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.846919Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.956467600Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.957457100Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 220 ms",
+          "2026-10-27T10:20:26.961455500Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:27.068012200Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:27.179576300Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:27.179576300Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 219 ms",
+          "2026-10-27T10:20:27.179576300Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:20:27.180576400Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:20:27.217112400Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a call which was not permitted.",
+          "2026-10-27T10:20:37.184925Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from OPEN to HALF_OPEN"
+        ]
+      }
+    },
+    {
+      "scenario": "both recovered through HTTP",
+      "A": {
+        "events": [
+          "2026-10-27T10:20:25.271027100Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.380743600Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.488525300Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.488525300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 218 ms",
+          "2026-10-27T10:20:25.505061Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.615598900Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.727126900Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.727126900Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 223 ms",
+          "2026-10-27T10:20:25.744129900Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.850905200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.962449600Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:25.963446500Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 219 ms",
+          "2026-10-27T10:20:25.979454200Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:26.090022300Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:26.201095100Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:26.201095100Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 222 ms",
+          "2026-10-27T10:20:26.201095100Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:20:26.202098500Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:20:26.249093200Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a call which was not permitted.",
+          "2026-10-27T10:20:36.208747300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from OPEN to HALF_OPEN",
+          "2026-10-27T10:20:37.237475400Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 5 ms",
+          "2026-10-27T10:20:37.267470300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 4 ms",
+          "2026-10-27T10:20:37.267470300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from HALF_OPEN to CLOSED"
+        ],
+        "notPermittedCalls": 0,
+        "attempts": 2,
+        "state": "CLOSED",
+        "failedCalls": 0,
+        "bufferedCalls": 0,
+        "retryAttempts": 8,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "stateTransitions": 3,
+        "breaker": "availabilityCircuitBreaker"
+      },
+      "B": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 3,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "retryAttempts": 8,
+        "bufferedCalls": 0,
+        "failedCalls": 0,
+        "state": "CLOSED",
+        "attempts": 2,
+        "notPermittedCalls": 0,
+        "events": [
+          "2026-10-27T10:20:26.260097900Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.374625200Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.484754200Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.484754200Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 224 ms",
+          "2026-10-27T10:20:26.501280400Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.608821100Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.719380400Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.720381800Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 219 ms",
+          "2026-10-27T10:20:26.736377Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.846919Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.956467600Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:26.957457100Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 220 ms",
+          "2026-10-27T10:20:26.961455500Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:27.068012200Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:27.179576300Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:27.179576300Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 219 ms",
+          "2026-10-27T10:20:27.179576300Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:20:27.180576400Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:20:27.217112400Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a call which was not permitted.",
+          "2026-10-27T10:20:37.184925Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from OPEN to HALF_OPEN",
+          "2026-10-27T10:20:37.234480900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:20:37.265479300Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:20:37.265479300Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from HALF_OPEN to CLOSED"
+        ]
+      }
+    },
+    {
+      "scenario": "failed half open recovery",
+      "service": "http://127.0.0.1:18081",
+      "state": {
+        "events": [
+          "2026-10-27T10:20:38.458267900Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:38.565796100Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:38.674349700Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:38.674349700Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 216 ms",
+          "2026-10-27T10:20:38.679348400Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:38.781916500Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:38.890470200Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:38.891479900Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 212 ms",
+          "2026-10-27T10:20:38.896495900Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:39.001061100Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:39.111359900Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:39.112348300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 216 ms",
+          "2026-10-27T10:20:39.117349300Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:39.218895600Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:39.329457100Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:39.330451100Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 213 ms",
+          "2026-10-27T10:20:39.330451100Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:20:39.330451100Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:20:39.344446100Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a call which was not permitted.",
+          "2026-10-27T10:20:49.344864200Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from OPEN to HALF_OPEN",
+          "2026-10-27T10:20:49.366400700Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:49.471965800Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:49.582520600Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:49.583524600Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 217 ms",
+          "2026-10-27T10:20:49.588522800Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:49.692091600Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:49.805646200Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:20:49.806654200Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 218 ms",
+          "2026-10-27T10:20:49.807649600Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' changed state from HALF_OPEN to OPEN"
+        ],
+        "notPermittedCalls": 0,
+        "attempts": 18,
+        "state": "OPEN",
+        "failedCalls": 2,
+        "bufferedCalls": 2,
+        "retryAttempts": 12,
+        "plan": {
+          "mode": "failure",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "stateTransitions": 3,
+        "breaker": "availabilityCircuitBreaker"
+      }
+    },
+    {
+      "scenario": "failed half open recovery",
+      "service": "http://127.0.0.1:18082",
+      "state": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 3,
+        "plan": {
+          "mode": "failure",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "retryAttempts": 12,
+        "bufferedCalls": 2,
+        "failedCalls": 2,
+        "state": "OPEN",
+        "attempts": 18,
+        "notPermittedCalls": 0,
+        "events": [
+          "2026-10-27T10:20:50.964776Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:51.066321300Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:51.174667100Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:51.175669300Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 210 ms",
+          "2026-10-27T10:20:51.181674200Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:51.284209800Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:51.393758500Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:51.393758500Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 213 ms",
+          "2026-10-27T10:20:51.399756200Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:51.504301500Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:51.617161900Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:51.617161900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 217 ms",
+          "2026-10-27T10:20:51.623699600Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:51.738275800Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:51.847826500Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:20:51.848819100Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 225 ms",
+          "2026-10-27T10:20:51.848819100Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' exceeded failure rate threshold. Current failure rate: 100.0",
+          "2026-10-27T10:20:51.848819100Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from CLOSED to OPEN",
+          "2026-10-27T10:20:51.886821100Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a call which was not permitted.",
+          "2026-10-27T10:21:01.858405900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from OPEN to HALF_OPEN",
+          "2026-10-27T10:21:01.937826600Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:21:02.046558Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:21:02.155487200Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:21:02.156589Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 218 ms",
+          "2026-10-27T10:21:02.171419600Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:21:02.279746900Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:21:02.391946700Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:21:02.391946700Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 221 ms",
+          "2026-10-27T10:21:02.391946700Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' changed state from HALF_OPEN to OPEN"
+        ]
+      }
+    },
+    {
+      "scenario": "retry succeeds on third attempt",
+      "service": "http://127.0.0.1:18081",
+      "state": {
+        "events": [
+          "2026-10-27T10:21:03.568125800Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:21:03.680047100Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:21:03.800756700Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a successful retry attempt. Number of retry attempts: '2', Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:21:03.800756700Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 234 ms"
+        ],
+        "notPermittedCalls": 0,
+        "attempts": 3,
+        "state": "CLOSED",
+        "failedCalls": 0,
+        "bufferedCalls": 1,
+        "retryAttempts": 2,
+        "plan": {
+          "mode": "transient",
+          "failures": 2,
+          "delayMs": 0
+        },
+        "stateTransitions": 0,
+        "breaker": "availabilityCircuitBreaker"
+      }
+    },
+    {
+      "scenario": "retry exhausted at three attempts",
+      "service": "http://127.0.0.1:18081",
+      "state": {
+        "events": [
+          "2026-10-27T10:21:04.998255100Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:21:05.105911Z[Europe/London]: Retry 'availabilityCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:21:05.216612600Z[Europe/London]: Retry 'availabilityCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'.",
+          "2026-10-27T10:21:05.217495300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded an error: 'org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 Injected upstream failure'. Elapsed time: 219 ms"
+        ],
+        "notPermittedCalls": 0,
+        "attempts": 3,
+        "state": "CLOSED",
+        "failedCalls": 1,
+        "bufferedCalls": 1,
+        "retryAttempts": 2,
+        "plan": {
+          "mode": "failure",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "stateTransitions": 0,
+        "breaker": "availabilityCircuitBreaker"
+      }
+    },
+    {
+      "scenario": "retry succeeds on third attempt",
+      "service": "http://127.0.0.1:18082",
+      "state": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 0,
+        "plan": {
+          "mode": "transient",
+          "failures": 2,
+          "delayMs": 0
+        },
+        "retryAttempts": 2,
+        "bufferedCalls": 1,
+        "failedCalls": 0,
+        "state": "CLOSED",
+        "attempts": 3,
+        "notPermittedCalls": 0,
+        "events": [
+          "2026-10-27T10:21:06.390116200Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:21:06.495754700Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:21:06.604292900Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a successful retry attempt. Number of retry attempts: '2', Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:21:06.604292900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 214 ms"
+        ]
+      }
+    },
+    {
+      "scenario": "retry exhausted at three attempts",
+      "service": "http://127.0.0.1:18082",
+      "state": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 0,
+        "plan": {
+          "mode": "failure",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "retryAttempts": 2,
+        "bufferedCalls": 1,
+        "failedCalls": 1,
+        "state": "CLOSED",
+        "attempts": 3,
+        "notPermittedCalls": 0,
+        "events": [
+          "2026-10-27T10:21:07.766558600Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '1'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:21:07.881755200Z[Europe/London]: Retry 'dependencyCircuitBreaker', waiting PT0.1S until attempt '2'. Last attempt failed with exception 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:21:07.989891300Z[Europe/London]: Retry 'dependencyCircuitBreaker' recorded a failed retry attempt. Number of retry attempts: '3'. Giving up. Last exception was: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'.",
+          "2026-10-27T10:21:07.990895900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded an error: 'com.henry.resilience.availability.exception.AvailabilityDependencyException: Injected dependency failure'. Elapsed time: 224 ms"
+        ]
+      }
+    },
+    {
+      "scenario": "eight simultaneous upstream requests",
+      "statuses": [
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200
+      ]
+    },
+    {
+      "scenario": "bounded rate limit burst",
+      "service": "http://127.0.0.1:18081",
+      "statuses": {
+        "200": 20,
+        "429": 40
+      },
+      "state": {
+        "events": [
+          "2026-10-27T10:21:10.486849600Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 4 ms",
+          "2026-10-27T10:21:10.486849600Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 4 ms",
+          "2026-10-27T10:21:10.488853800Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 4 ms",
+          "2026-10-27T10:21:10.492855300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 4 ms",
+          "2026-10-27T10:21:10.498858700Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 6 ms",
+          "2026-10-27T10:21:10.507853200Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 8 ms",
+          "2026-10-27T10:21:10.508860700Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 9 ms",
+          "2026-10-27T10:21:10.508860700Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 7 ms",
+          "2026-10-27T10:21:10.507853200Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 8 ms",
+          "2026-10-27T10:21:10.511847500Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 8 ms",
+          "2026-10-27T10:21:10.514851300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 15 ms",
+          "2026-10-27T10:21:10.519100200Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 20 ms",
+          "2026-10-27T10:21:10.524095300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 4 ms",
+          "2026-10-27T10:21:10.524095300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 8 ms",
+          "2026-10-27T10:21:10.524095300Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 4 ms",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.536121900Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.537119200Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.538125400Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.538125400Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.540116100Z[Europe/London]}",
+          "2026-10-27T10:21:10.547129400Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 13 ms",
+          "2026-10-27T10:21:10.548131Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 13 ms",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.548131Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.548131Z[Europe/London]}",
+          "2026-10-27T10:21:10.549658600Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 14 ms",
+          "2026-10-27T10:21:10.551689800Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 17 ms",
+          "2026-10-27T10:21:10.551689800Z[Europe/London]: CircuitBreaker 'availabilityCircuitBreaker' recorded a successful call. Elapsed time: 15 ms",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.560690900Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.562696700Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.562696700Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.562696700Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.563693Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.565691600Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.565691600Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.567696400Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.567696400Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.576929800Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.576929800Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.577932100Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.578927600Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.591927500Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.597931800Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.598941Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.598941Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.600932Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.601929300Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.602926200Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.603928100Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.605932900Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.605932900Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.606934500Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.608938800Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.616929800Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.621935200Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.625937800Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.626939100Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.630921500Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.630921500Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.634926600Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='availabilityCircuitBreaker', creationTime=2026-10-27T10:21:10.639948800Z[Europe/London]}"
+        ],
+        "notPermittedCalls": 0,
+        "attempts": 20,
+        "state": "CLOSED",
+        "failedCalls": 0,
+        "bufferedCalls": 4,
+        "retryAttempts": 0,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "stateTransitions": 0,
+        "breaker": "availabilityCircuitBreaker"
+      }
+    },
+    {
+      "scenario": "bounded rate limit burst",
+      "service": "http://127.0.0.1:18082",
+      "statuses": {
+        "200": 20,
+        "429": 40
+      },
+      "state": {
+        "breaker": "dependencyCircuitBreaker",
+        "stateTransitions": 0,
+        "plan": {
+          "mode": "success",
+          "failures": 0,
+          "delayMs": 0
+        },
+        "retryAttempts": 0,
+        "bufferedCalls": 4,
+        "failedCalls": 0,
+        "state": "CLOSED",
+        "attempts": 20,
+        "notPermittedCalls": 0,
+        "events": [
+          "2026-10-27T10:21:11.809957200Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.812968900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.813966500Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.817965200Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.829817900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.834874Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.835870500Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.838917900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.840917Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.840917Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.840917Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.846919800Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.847911300Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.861828900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.864354100Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.866346600Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.867354900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.868367100Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.867354900Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "2026-10-27T10:21:11.869361700Z[Europe/London]: CircuitBreaker 'dependencyCircuitBreaker' recorded a successful call. Elapsed time: 0 ms",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.869361700Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.869361700Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.895793100Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.897797Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.898799400Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.898799400Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.898799400Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.899794800Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.899794800Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.902807Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.910529Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.914576400Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.917580400Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.920847100Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.925782300Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.942384700Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.951374300Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.964487400Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.966491900Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.967488900Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.968499800Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.970495200Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.970495200Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.974680Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.974680Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.985026700Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.989025700Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:11.996719700Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:12.003722Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:12.006723Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:12.007723600Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:12.008727500Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:12.009733300Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:12.009733300Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:12.011729200Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:12.011729200Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:12.011729200Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:12.014723800Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:12.020710500Z[Europe/London]}",
+          "RateLimiterEvent{type=FAILED_ACQUIRE, rateLimiterName='dependencyCircuitBreaker', creationTime=2026-10-27T10:21:12.021708300Z[Europe/London]}"
+        ]
+      }
+    }
+  ]
+}

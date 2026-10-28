@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: availability-service
+server:
+  port: 8082
+resilience4j:
+  circuitbreaker:
+    circuitBreakerAspectOrder: 2
+    instances:
+      dependencyCircuitBreaker:
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 4
+        minimumNumberOfCalls: 4
+        failureRateThreshold: 50
+        waitDurationInOpenState: ${CB_WAIT:10s}
+        permittedNumberOfCallsInHalfOpenState: 2
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        eventConsumerBufferSize: 100
+        ignoreExceptions:
+          - io.github.resilience4j.ratelimiter.RequestNotPermitted
+  retry:
+    retryAspectOrder: 3
+    instances:
+      dependencyCircuitBreaker:
+        maxAttempts: ${RETRY_ATTEMPTS:3}
+        waitDuration: ${RETRY_DELAY:100ms}
+        enableExponentialBackoff: ${RETRY_EXPONENTIAL:false}
+        exponentialBackoffMultiplier: 2
+        retryExceptions:
+          - com.henry.resilience.availability.exception.AvailabilityDependencyException
+  ratelimiter:
+    rateLimiterAspectOrder: 1
+    instances:
+      dependencyCircuitBreaker:
+        limitForPeriod: ${RATE_LIMIT:20}
+        limitRefreshPeriod: ${RATE_PERIOD:1s}
+        timeoutDuration: ${RATE_TIMEOUT:0ms}
+        eventConsumerBufferSize: 100
